@@ -1,64 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace My_Little_Miner
 {
-
-
-        //types of pickaxes
-        public enum PickaxeType
-        {
-            Wood,
-            Stone,
-            Iron,
-            Gold,
-            Diamond,
-            Obsidian
-        }
-
+    public enum PickaxeVariety
+    {
+        Wood,
+        Stone,
+        Iron,
+        Gold,
+        Diamond
+    }
     class Pickaxe
     {
-        private PickaxeType playerPickaxe;
+        private PickaxeVariety pickaxeType;
+        public PickaxeVariety PickaxeType { get; set; }
 
-        public PickaxeType PlayerPickaxe
-        {
-            get { return playerPickaxe; }
-            set { playerPickaxe = value; }
-        }
+        private int pickaxehealth;
+        public int PickaxeHealth { get; set; }
 
-        private float pickaxeDamamge;
-        public float PixaceDamage
-        {
-            get { return pickaxeDamamge; }
-            set { pickaxeDamamge = value; }
-        }
+        private int pickaxedamage;
+        public int PickaxeDamage { get; set; }
 
-        private float lifeTime;
-        public float LifeTime
+        public Pickaxe(PickaxeVariety pickaxe)
         {
-            get { return lifeTime; }
-            set { lifeTime = value; }
-        }
-        private PickaxeType types;
-        public PickaxeType Types
-        {
-            get { return types; }
-            set { types = value; }
-        }
-
-        public void PickaxeDamage()
-        {
-           
-        }
-
-        public Pickaxe()
-        {
-            types = PickaxeType.Wood;
-            types = PickaxeType.Stone;
+            PickaxeHealth = pickaxehealth;
+            PickaxeDamage = pickaxedamage;
+            PickaxeType = pickaxe;
         }
     }
 }

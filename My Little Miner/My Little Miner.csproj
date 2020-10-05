@@ -43,11 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backpack.cs" />
-    <Compile Include="Food.cs" />
-    <Compile Include="Logic.cs" />
     <Compile Include="Mineral.cs" />
-    <Compile Include="Money.cs" />
     <Compile Include="Pickaxe.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

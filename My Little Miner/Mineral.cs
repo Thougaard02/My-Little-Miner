@@ -1,33 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace My_Little_Miner
 {
+    public enum MineralsVariety
+    {
+        Stone,
+        Coal,
+        Iron,
+        Gold,
+        Diamond
+        
+    }
     class Mineral
     {
-        public enum MineralType
-        {
-            Wood,
-            Iron,
-            Gold,
-            Diamond,
-            Obsidian
-        }
+
+        private MineralsVariety mineralsType;
+
+        public MineralsVariety MineralsType { get; set; }
+
+        private int health;
+        public int Health { get; set; }
 
         private float cost;
-        public float Cost
+        public float Cost { get; set; }
+
+        public Mineral(MineralsVariety mineral)
         {
-            get { return cost; }
-            set { cost = value; }
-        }
-        private float health;
-        public float Health
-        {
-            get { return health; }
-            set { health = value; }
+            MineralsType = mineral;
+            Health = health;
+            Cost = cost;
+
         }
     }
 }

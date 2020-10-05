@@ -10,34 +10,16 @@ namespace My_Little_Miner
     {
 
         private string name;
+        public string Name { get; set; }
 
-        public string Name
+        private bool isMale;
+        public bool IsMale { get; set; }
+
+        public Player(string name, bool gender)
         {
-            get { return name; }
-            set { name = value; }
+            Name = name;
+            IsMale = gender;
         }
 
-        private Pickaxe playerPickaxe;
-        public Pickaxe PlayerPickaxe
-        {
-            get { return playerPickaxe; }
-            set { playerPickaxe = value; }
-        }
-
-        private int HealthBar;
-        public int healthBar
-        {
-            get { return healthBar; }
-            set { healthBar = value; }
-        }
-        public Player(string name, Pickaxe pickaxe, int healthBar)
-        {
-            Name = "Miner " + name;
-            PlayerPickaxe = pickaxe;
-            HealthBar = healthBar;
-        }
-
-
-                        
     }
 }

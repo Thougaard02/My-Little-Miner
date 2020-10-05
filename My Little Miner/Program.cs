@@ -10,6 +10,8 @@ namespace My_Little_Miner
     {
         static void Main(string[] args)
         {
+            Pickaxe woodPickaxe = new Pickaxe(PickaxeVariety.Wood);
+            Pickaxe stonePickaxe = new Pickaxe(PickaxeVariety.Stone);
         }
     }
 }
