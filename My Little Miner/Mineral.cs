@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace My_Little_Miner
 {
+    //Varieties of minerals
     public enum MineralsVariety
     {
         Stone,
@@ -18,7 +19,7 @@ namespace My_Little_Miner
     }
     class Mineral
     {
-
+        //Property
         private MineralsVariety mineralsType;
 
         public MineralsVariety MineralsType { get; set; }
@@ -29,6 +30,7 @@ namespace My_Little_Miner
         private float cost;
         public float Cost { get; set; }
 
+        //Constructor
         public Mineral(MineralsVariety mineral)
         {
             MineralsType = mineral;

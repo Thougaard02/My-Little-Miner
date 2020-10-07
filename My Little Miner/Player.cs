@@ -9,16 +9,29 @@ namespace My_Little_Miner
     class Player
     {
 
+        //Property
         private string name;
         public string Name { get; set; }
 
         private bool isMale;
         public bool IsMale { get; set; }
 
-        public Player(string name, bool gender)
+        private Pickaxe myPickaxe;
+        public Pickaxe MyPickaxe{ get; set; }
+
+        private List<Mineral> backpack;
+
+        public List<Mineral> Backpack { get; set; }
+
+
+
+        //Constructor
+        public Player(string name, bool gender, Pickaxe myPickaxe)
         {
             Name = name;
             IsMale = gender;
+            MyPickaxe = myPickaxe;
+            Backpack = new List<Mineral>();
         }
 
     }

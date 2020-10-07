@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace My_Little_Miner
 {
+    //Varieties of Pickaxes
     public enum PickaxeVariety
     {
         Wood,
@@ -17,6 +18,7 @@ namespace My_Little_Miner
     }
     class Pickaxe
     {
+        //Property
         private PickaxeVariety pickaxeType;
         public PickaxeVariety PickaxeType { get; set; }
 
@@ -26,11 +28,12 @@ namespace My_Little_Miner
         private int pickaxedamage;
         public int PickaxeDamage { get; set; }
 
+        //Constructor
         public Pickaxe(PickaxeVariety pickaxe)
         {
+            PickaxeType = pickaxe;
             PickaxeHealth = pickaxehealth;
             PickaxeDamage = pickaxedamage;
-            PickaxeType = pickaxe;
         }
     }
 }
