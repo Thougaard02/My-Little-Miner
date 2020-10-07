@@ -8,7 +8,6 @@ namespace My_Little_Miner
 {
     class Mine
     {
-
         void GoMining(Player player)
         {
             //Chance for minerals
@@ -21,29 +20,24 @@ namespace My_Little_Miner
             int value = r.Next(1, 100);
 
             if (value < 50)
-            {
-                //sæt det på alle!!!!
+            {              
                 PickaxeFortune(player, MineralsVariety.Stone);
-
             }
             else if (value >= 51 && value <= 81)
             {
-                player.Backpack.Add(new Mineral(MineralsVariety.Coal));
-
+                PickaxeFortune(player, MineralsVariety.Coal);
             }
             else if (value >= 82 && value <= 92)
             {
-                player.Backpack.Add(new Mineral(MineralsVariety.Iron));
-
+                PickaxeFortune(player, MineralsVariety.Iron);
             }
             else if (value >= 93 && value <= 98)
             {
-                player.Backpack.Add(new Mineral(MineralsVariety.Gold));
-
+                PickaxeFortune(player, MineralsVariety.Gold);
             }
             else if (value >= 99 && value <= 100)
             {
-                player.Backpack.Add(new Mineral(MineralsVariety.Diamond));
+                PickaxeFortune(player, MineralsVariety.Diamond);
             }
         }
 

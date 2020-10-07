@@ -34,5 +34,13 @@ namespace My_Little_Miner
             Backpack = new List<Mineral>();
         }
 
+        void BackPackInventory(List<Mineral> backpack)
+        {
+            foreach (Mineral minerals in backpack)
+            {
+                Console.WriteLine(minerals.MineralsType);
+            }
+        }
+
     }
 }
