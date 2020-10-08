@@ -9,21 +9,14 @@ namespace My_Little_Miner
     class Player
     {
 
-        //Property
-        private string name;
+        //Property        
         public string Name { get; set; }
 
-        private bool isMale;
         public bool IsMale { get; set; }
 
-        private Pickaxe myPickaxe;
-        public Pickaxe MyPickaxe{ get; set; }
-
-        private List<Mineral> backpack;
+        public Pickaxe MyPickaxe { get; set; }
 
         public List<Mineral> Backpack { get; set; }
-
-
 
         //Constructor
         public Player(string name, bool gender, Pickaxe myPickaxe)
@@ -34,12 +27,21 @@ namespace My_Little_Miner
             Backpack = new List<Mineral>();
         }
 
-        void BackPackInventory(List<Mineral> backpack)
+        public string BackPackInventory()
         {
-            foreach (Mineral minerals in backpack)
+            for (int i = 0; i < Backpack.Count; i++)
             {
-                Console.WriteLine(minerals.MineralsType);
+                string showInventory = Backpack[i].MineralsType.ToString();
+                return showInventory;
             }
+            
+
+            //foreach (Mineral minerals in Backpack)
+            //{
+            //    string showInventory = minerals.MineralsType.ToString();
+            //    return showInventory;
+            //}
+            return null;
         }
 
     }

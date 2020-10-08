@@ -20,8 +20,6 @@ namespace My_Little_Miner
     class Mineral
     {
         //Property
-        private MineralsVariety mineralsType;
-
         public MineralsVariety MineralsType { get; set; }
 
         private int health;
