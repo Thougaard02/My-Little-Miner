@@ -11,16 +11,8 @@ namespace My_Little_Miner
     {
         static void Main(string[] args)
         {
-            Pickaxe pickaxe = new Pickaxe(PickaxeVariety.Wood);
-            Player player = new Player("Rasmus", true, pickaxe);
-            Mine game = new Mine();
-
-            while (true)
-            {
-                player.Backpack = game.GoMining(player);
-                Console.WriteLine(player.BackPackInventory());
-                Console.ReadKey();
-            }                   
+            GameScene scene = new GameScene();                  
+            scene.MyLittleMinerScene();          
         }
     }
 }
