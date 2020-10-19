@@ -17,9 +17,9 @@ namespace My_Little_Miner
 
             while (true)
             {
-                player.Backpack = game.GoMining(player);
-                Console.WriteLine(player.BackPackInventory());
+                Console.WriteLine("You got a new mineral: " + game.GoMining(player));                                            
                 Console.ReadKey();
+                Console.Clear();
             }                   
         }
     }

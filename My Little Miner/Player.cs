@@ -27,22 +27,25 @@ namespace My_Little_Miner
             Backpack = new List<Mineral>();
         }
 
-        public string BackPackInventory()
+        public string ShowMiningInventory()
         {
+            string showInventory = "";
             for (int i = 0; i < Backpack.Count; i++)
             {
-                string showInventory = Backpack[i].MineralsType.ToString();
-                return showInventory;
-            }
-            
-
-            //foreach (Mineral minerals in Backpack)
-            //{
-            //    string showInventory = minerals.MineralsType.ToString();
-            //    return showInventory;
-            //}
-            return null;
+                 showInventory += Backpack[i].MineralsType.ToString();
+               
+                Console.Clear();
+            }                       
+            return showInventory;
         }
-
+        //public string BackpackInventory()
+        //{
+        //    foreach (Mineral mineral in Backpack)
+        //    {
+        //        return mineral.MineralsType.ToString();
+        //    }
+        //    return null;
+        //}
+        
     }
 }
