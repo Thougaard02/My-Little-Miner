@@ -19,7 +19,7 @@ namespace My_Little_Miner
             Random r = new Random(Guid.NewGuid().GetHashCode());
             int value = r.Next(1, 100);
 
-            if (value <= 50)
+            if (value < 50)
             {                
                 return PickaxeFortune(player, MineralsVariety.Stone);
             }
@@ -45,7 +45,7 @@ namespace My_Little_Miner
         public List<Mineral> PickaxeFortune(Player player, MineralsVariety variety)
         {
 
-            //Chacne of getting extra minerals
+            //
             Random rd = new Random();
 
             int chance = rd.Next(1, 100);
@@ -58,16 +58,6 @@ namespace My_Little_Miner
             }
             else
             {
-                player.Backpack.Add(new Mineral(variety));
-                player.Backpack.Add(new Mineral(variety));
-                player.Backpack.Add(new Mineral(variety));
-                player.Backpack.Add(new Mineral(variety));
-                player.Backpack.Add(new Mineral(variety));
-                player.Backpack.Add(new Mineral(variety));
-                player.Backpack.Add(new Mineral(variety));
-                player.Backpack.Add(new Mineral(variety));
-                player.Backpack.Add(new Mineral(variety));
-                player.Backpack.Add(new Mineral(variety));
                 player.Backpack.Add(new Mineral(variety));
             }
             return player.Backpack;

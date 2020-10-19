@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,15 +27,22 @@ namespace My_Little_Miner
             Backpack = new List<Mineral>();
         }
 
-        static void BackpackInventory(List<Mineral> backpack)
+        public string BackPackInventory()
         {
-            foreach (Mineral mineral in backpack )
+            for (int i = 0; i < Backpack.Count; i++)
             {
-                Console.WriteLine(mineral.MineralsType.ToString());
+                string showInventory = Backpack[i].MineralsType.ToString();
+                return showInventory;
             }
+            
+
+            //foreach (Mineral minerals in Backpack)
+            //{
+            //    string showInventory = minerals.MineralsType.ToString();
+            //    return showInventory;
+            //}
+            return null;
         }
 
-
-       
     }
 }
