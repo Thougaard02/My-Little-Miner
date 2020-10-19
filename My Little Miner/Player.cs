@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,21 +10,14 @@ namespace My_Little_Miner
     class Player
     {
 
-        //Property
-        private string name;
+        //Property        
         public string Name { get; set; }
 
-        private bool isMale;
         public bool IsMale { get; set; }
 
-        private Pickaxe myPickaxe;
-        public Pickaxe MyPickaxe{ get; set; }
-
-        private List<Mineral> backpack;
+        public Pickaxe MyPickaxe { get; set; }
 
         public List<Mineral> Backpack { get; set; }
-
-
 
         //Constructor
         public Player(string name, bool gender, Pickaxe myPickaxe)
@@ -34,13 +28,7 @@ namespace My_Little_Miner
             Backpack = new List<Mineral>();
         }
 
-        void BackPackInventory(List<Mineral> backpack)
-        {
-            foreach (Mineral minerals in backpack)
-            {
-                Console.WriteLine(minerals.MineralsType);
-            }
-        }
 
+       
     }
 }

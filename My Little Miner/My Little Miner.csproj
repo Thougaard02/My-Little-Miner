@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameScene.cs" />
     <Compile Include="Mine.cs" />
     <Compile Include="Mineral.cs" />
     <Compile Include="Pickaxe.cs" />
