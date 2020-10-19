@@ -11,6 +11,7 @@ namespace My_Little_Miner
     {
         static void Main(string[] args)
         {
+
             GameScene scene = new GameScene();                  
             scene.MyLittleMinerScene();          
         }
