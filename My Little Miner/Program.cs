@@ -9,7 +9,7 @@ namespace My_Little_Miner
     class Program
     {
         static void Main(string[] args)
-        {            
+        {                        
         }
     }
 }
