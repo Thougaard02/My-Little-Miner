@@ -22,36 +22,34 @@ namespace My_Little_Miner
 
             if (value <= 50)
             {
-                temp = PickaxeFortune(player, MineralsVariety.Stone, temp);
+                temp = PickaxeFortune(player, MineralsVariety.Cobblestone, temp);
                 return temp;
             }
             else if (value >= 51 && value <= 81)
             {
-                temp = PickaxeFortune(player, MineralsVariety.Coal, temp);
+                temp = PickaxeFortune(player, MineralsVariety.CoalOre, temp);
                 return temp;
             }
             else if (value >= 82 && value <= 92)
             {
-                temp = PickaxeFortune(player, MineralsVariety.Iron, temp);
+                temp = PickaxeFortune(player, MineralsVariety.IronOre, temp);
                 return temp;
             }
             else if (value >= 93 && value <= 98)
             {
-                temp = PickaxeFortune(player, MineralsVariety.Gold, temp);
+                temp = PickaxeFortune(player, MineralsVariety.GoldOre, temp);
                 return temp;
             }
             else if (value >= 99 && value <= 100)
             {
-                temp = PickaxeFortune(player, MineralsVariety.Diamond, temp);
+                temp = PickaxeFortune(player, MineralsVariety.DiamondOre, temp);
                 return temp;
             }
             return null;
         }
-
         public string PickaxeFortune(Player player, MineralsVariety variety,string temp)
         {
-
-            //
+            //Chance of getting 1 extra minerals
             Random rd = new Random();
 
             int chance = rd.Next(1, 100);
@@ -60,16 +58,35 @@ namespace My_Little_Miner
                 for (int i = 0; i < 2; i++)
                 {
                     player.Backpack.Add(new Mineral(variety));
-                    temp = variety.ToString() + " 2x"; 
+                    temp = FormatEnum(variety) + " 2x"; 
                 }
                 return temp;
             }
             else
             {
                 player.Backpack.Add(new Mineral(variety));
-                temp = variety.ToString();
+                temp = FormatEnum(variety);
                 return temp;
             }
+        }
+
+        private string FormatEnum(MineralsVariety mineralsVariety)
+        {
+            //Print mined minerals name
+            switch (mineralsVariety)
+            {
+                case MineralsVariety.Cobblestone:
+                    break;
+                case MineralsVariety.CoalOre:
+                    return "Coal Ore";                    
+                case MineralsVariety.IronOre:
+                    return "Iron Ore";                    
+                case MineralsVariety.GoldOre:
+                    return "Gold Ore";
+                case MineralsVariety.DiamondOre:
+                    return "Diamond Ore";
+            }
+            return mineralsVariety.ToString();
         }
     }
 }

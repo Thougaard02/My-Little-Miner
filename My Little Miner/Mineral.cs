@@ -10,12 +10,11 @@ namespace My_Little_Miner
     //Varieties of minerals
     public enum MineralsVariety
     {
-        Stone,
-        Coal,
-        Iron,
-        Gold,
-        Diamond
-        
+        Cobblestone,
+        CoalOre,
+        IronOre,
+        GoldOre,
+        DiamondOre        
     }
     class Mineral
     {
@@ -38,7 +37,6 @@ namespace My_Little_Miner
             Health = health;
             Cost = cost;
             Name = name;
-
         }
     }
 }

@@ -26,26 +26,33 @@ namespace My_Little_Miner
             MyPickaxe = myPickaxe;
             Backpack = new List<Mineral>();
         }
-
-        public string ShowMiningInventory()
+       public string ShowInventory()
         {
-            string showInventory = "";
+            string backpack = "";
             for (int i = 0; i < Backpack.Count; i++)
             {
-                 showInventory += Backpack[i].MineralsType.ToString();
-               
-                Console.Clear();
-            }                       
-            return showInventory;
+                backpack = FormatEnum(Backpack[i].MineralsType);
+                return backpack;
+            }
+            return null;
         }
-        //public string BackpackInventory()
-        //{
-        //    foreach (Mineral mineral in Backpack)
-        //    {
-        //        return mineral.MineralsType.ToString();
-        //    }
-        //    return null;
-        //}
-        
+        private string FormatEnum(MineralsVariety mineralsVariety)
+        {
+            //Print minerals name out in inventory
+            switch (mineralsVariety)
+            {
+                case MineralsVariety.Cobblestone:
+                    break;
+                case MineralsVariety.CoalOre:
+                    return "Coal Ore";
+                case MineralsVariety.IronOre:
+                    return "Iron Ore";
+                case MineralsVariety.GoldOre:
+                    return "Gold Ore";
+                case MineralsVariety.DiamondOre:
+                    return "Diamond Ore";
+            }
+            return mineralsVariety.ToString();
+        }
     }
 }

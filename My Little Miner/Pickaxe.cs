@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace My_Little_Miner
 {
-    //Varieties of Pickaxes
+    //Variety of Pickaxes
     public enum PickaxeVariety
     {
         Wood,

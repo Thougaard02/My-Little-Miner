@@ -11,9 +11,10 @@ namespace My_Little_Miner
     {
         static void Main(string[] args)
         {
-           
+            Pickaxe pickaxe = new Pickaxe(PickaxeVariety.Wood);
+            Player player = new Player("Rasmus", true, pickaxe);
             Menu menu = new Menu();
-            menu.MainMenu();                           
+            menu.Scene(player);                           
         }
     }
 }
