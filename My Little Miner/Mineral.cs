@@ -21,22 +21,10 @@ namespace My_Little_Miner
         //Property
         public MineralsVariety MineralsType { get; set; }
 
-        private int health;
-        public int Health { get; set; }
-
-        private float cost;
-        public float Cost { get; set; }
-
-        private string name;
-        public string Name { get; set; }
-
         //Constructor
         public Mineral(MineralsVariety mineral)
         {
-            MineralsType = mineral;
-            Health = health;
-            Cost = cost;
-            Name = name;
+            MineralsType = mineral;           
         }
     }
 }

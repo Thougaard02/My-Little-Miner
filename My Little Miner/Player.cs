@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace My_Little_Miner
 {
@@ -26,15 +22,14 @@ namespace My_Little_Miner
             MyPickaxe = myPickaxe;
             Backpack = new List<Mineral>();
         }
-       public string ShowInventory()
+        public string ShowInventory()
         {
             string backpack = "";
             for (int i = 0; i < Backpack.Count; i++)
             {
-                backpack = FormatEnum(Backpack[i].MineralsType);
-                return backpack;
+                backpack += FormatEnum(Backpack[i].MineralsType) + "\n";
             }
-            return null;
+            return backpack;
         }
         private string FormatEnum(MineralsVariety mineralsVariety)
         {

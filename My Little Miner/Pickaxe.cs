@@ -22,18 +22,12 @@ namespace My_Little_Miner
         private PickaxeVariety pickaxeType;
         public PickaxeVariety PickaxeType { get; set; }
 
-        private int pickaxehealth;
-        public int PickaxeHealth { get; set; }
-
-        private int pickaxedamage;
-        public int PickaxeDamage { get; set; }
+      
 
         //Constructor
         public Pickaxe(PickaxeVariety pickaxe)
         {
-            PickaxeType = pickaxe;
-            PickaxeHealth = pickaxehealth;
-            PickaxeDamage = pickaxedamage;
+            PickaxeType = pickaxe;      
         }
     }
 }

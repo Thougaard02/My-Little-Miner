@@ -51,9 +51,9 @@ namespace My_Little_Miner
         {
             //Chance of getting 1 extra minerals
             Random rd = new Random();
-
             int chance = rd.Next(1, 100);
-            if (chance > 90)
+            
+            if (chance >= 90)
             {
                 for (int i = 0; i < 2; i++)
                 {

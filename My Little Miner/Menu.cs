@@ -19,14 +19,21 @@ namespace My_Little_Miner
             {
                 Console.Clear();
                 Console.WriteLine("Going to the cave...");
-                Thread.Sleep(1000);
+                //Thread.Sleep(1000);
                 Console.WriteLine("1. Being Mining!");
                 MiningScene(player);
             }
             else if (userinput == 2)
             {
                 Inventory(player);
-            }           
+            }
+            else if (userinput == 3)
+            {
+                Console.WriteLine("Loading inventory");
+                //Thread.Sleep(1000);
+                Inventory(player);
+
+            }
         }
         public void MainMenu()
         {
@@ -49,6 +56,7 @@ namespace My_Little_Miner
                     Console.Clear();
                     Scene(player);
                 }
+               
             }
         }
         public void Inventory(Player player)
