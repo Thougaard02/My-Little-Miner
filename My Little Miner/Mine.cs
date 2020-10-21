@@ -10,16 +10,17 @@ namespace My_Little_Miner
     {
         public string GoMining(Player player)
         {
-            string temp = "";
             //Chance for minerals
             //Stone = 50%  1/50
             //Coal = 30% 51/81
             //Iron = 10% 82/92
             //Gold = 5% = 93/98
             //Diamond 2% 99/100
+            
+            string temp = "";
             Random r = new Random(Guid.NewGuid().GetHashCode());
             int value = r.Next(1, 100);
-
+            
             if (value <= 50)
             {
                 temp = PickaxeFortune(player, MineralsVariety.Cobblestone, temp);
@@ -49,10 +50,11 @@ namespace My_Little_Miner
         }
         public string PickaxeFortune(Player player, MineralsVariety variety,string temp)
         {
-            //Chance of getting 1 extra minerals
+            //returing minerals to players' backpack           
             Random rd = new Random();
             int chance = rd.Next(1, 100);
             
+            //Chance of getting 2x minerals
             if (chance >= 90)
             {
                 for (int i = 0; i < 2; i++)
@@ -62,6 +64,7 @@ namespace My_Little_Miner
                 }
                 return temp;
             }
+            //Return 1x mineral
             else
             {
                 player.Backpack.Add(new Mineral(variety));
