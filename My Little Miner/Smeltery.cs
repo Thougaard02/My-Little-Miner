@@ -11,28 +11,31 @@ namespace My_Little_Miner
     class Smeltery
     {
 
-        public enum SmeltMinerals
+        public string Inventory(Player player)
         {
-            Stone,
-            Coal,
-            Iron,
-            Gold,
-            Diamond
-        }
+            string inventory = "";
+            for (int i = 0; i < player.Backpack.Count; i++)
+            {
 
-        //public void MineralSmelt(Player player)
-        //{
-        //    string userinput = Console.ReadLine();
-        //    for (int i = 0; i < player.Backpack.Count; i++)
-        //    {
-        //        if ((int)player.Backpack[i].MineralsType == (int)player.Backpack[i].MineralsType * 3)
-        //        {
-        //            if (userinput == player.Backpack[i].MineralsType.ToString())
-        //            {
-        //                player.Backpack.Remove();
-        //            }
-        //        }
-        //    }
-        //}
+                inventory += $"{i + 1 } {player.Backpack[i].Stage.ToString()} {player.Backpack[i].MineralsType} \n";
+            }
+            return inventory;
+        }
+        public string MineralSmelt(Player player)
+        {
+            string refinedMineral = "";
+
+            int userinput = Convert.ToInt32(Console.ReadLine());
+            userinput--;
+            for (int i = 0; i < player.Backpack.Count; i++)
+            {
+                if (userinput == i && player.Backpack[i].Stage == Stage.Raw)
+                {
+                    player.Backpack[i].Stage = Stage.Refined;
+                    refinedMineral = $"You mineral is {player.Backpack[i].Stage.ToString()} {player.Backpack[i].MineralsType}";
+                }
+            }
+            return refinedMineral;
+        }
     }
 }

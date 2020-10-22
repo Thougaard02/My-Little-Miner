@@ -12,7 +12,7 @@ namespace My_Little_Miner
         Mine mine = new Mine();
         Smeltery smeltery = new Smeltery();
         public void Scene(Player player)
-        {            
+        {
             //Menu, MiningScene, Inventory, Smeltery, and shop           
             MainMenu();
             int userinput = Convert.ToInt32(Console.ReadLine());
@@ -36,9 +36,8 @@ namespace My_Little_Miner
             //Smeltery "Smelt your raw minerals in player backpack"
             else if (userinput == 3)
             {
-                Console.WriteLine("Loading inventory");
-                //Thread.Sleep(1000);
-                Inventory(player);
+                SmelteryScene(player);
+                Console.ReadKey();
 
             }
         }
@@ -67,8 +66,9 @@ namespace My_Little_Miner
                     Thread.Sleep(1000);
                     Console.Clear();
                     Scene(player);
+
                 }
-               
+
             }
         }
         public void Inventory(Player player)
@@ -77,9 +77,7 @@ namespace My_Little_Miner
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Inventory:" + "\n" + "--------------------------" + "\n");
-                Console.WriteLine(player.ShowInventory() + "\n" + "--------------------------");
-                Console.WriteLine("1. Close backpack");
+                Console.WriteLine($"Inventory: \n--------------------------\n{player.ShowInventory()}--------------------------\n1. Close backpack  ");
                 int userinput = Convert.ToInt32(Console.ReadLine());
                 if (userinput == 1)
                 {
@@ -87,6 +85,19 @@ namespace My_Little_Miner
                     Scene(player);
                 }
             }
-        }      
+        }
+
+        public void SmelteryScene(Player player)
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Welcome to the smeltery" + "\n");
+                Console.WriteLine($"Inventory \n-------------------------- \n{smeltery.Inventory(player)}--------------------------");
+                Console.WriteLine("Enter the number of the mineral you want to refined");
+                Console.WriteLine(smeltery.MineralSmelt(player));
+            }
+
+        }
     }
 }
