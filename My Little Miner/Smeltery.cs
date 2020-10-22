@@ -32,10 +32,29 @@ namespace My_Little_Miner
                 if (userinput == i && player.Backpack[i].Stage == Stage.Raw)
                 {
                     player.Backpack[i].Stage = Stage.Refined;
-                    refinedMineral = $"You mineral is {player.Backpack[i].Stage.ToString()} {player.Backpack[i].MineralsType}";
+                    refinedMineral = player.Backpack[i].Stage.ToString() + FormatEnum(player.Backpack[i].MineralsType);
                 }
             }
             return refinedMineral;
+        }
+
+        private string FormatEnum(MineralsVariety mineralsVariety)
+        {
+            //Print mined minerals name
+            switch (mineralsVariety)
+            {
+                case MineralsVariety.Cobblestone:
+                    return " Cobblestone";                    
+                case MineralsVariety.CoalOre:
+                    return " Coal Ore";
+                case MineralsVariety.IronOre:
+                    return " Iron Ore";
+                case MineralsVariety.GoldOre:
+                    return " Gold Ore";
+                case MineralsVariety.DiamondOre:
+                    return " Diamond Ore";
+            }
+            return mineralsVariety.ToString();
         }
     }
 }

@@ -96,6 +96,13 @@ namespace My_Little_Miner
                 Console.WriteLine($"Inventory \n-------------------------- \n{smeltery.Inventory(player)}--------------------------");
                 Console.WriteLine("Enter the number of the mineral you want to refined");
                 Console.WriteLine(smeltery.MineralSmelt(player));
+                Console.WriteLine("0. Return To Villages");
+                int userinput = Convert.ToInt32(Console.ReadLine());
+                if (userinput == 0)
+                {
+                    Console.Clear();
+                    Scene(player);
+                }
             }
 
         }
