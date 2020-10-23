@@ -12,7 +12,10 @@ namespace My_Little_Miner
 
         public Pickaxe MyPickaxe { get; set; }
 
+        public int Money { get; set; }
+        
         public List<Mineral> Backpack { get; set; }
+
 
         //Constructor
         public Player(string name, bool gender, Pickaxe myPickaxe)
@@ -20,6 +23,7 @@ namespace My_Little_Miner
             Name = name;
             IsMale = gender;
             MyPickaxe = myPickaxe;
+            Money = Money;
             Backpack = new List<Mineral>();
         }
         public string ShowInventory()

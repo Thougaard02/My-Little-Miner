@@ -14,17 +14,26 @@ namespace My_Little_Miner
         CoalOre,
         IronOre,
         GoldOre,
-        DiamondOre        
+        DiamondOre
+    }
+
+    public enum Stage
+    {
+        Raw,
+        Refined
     }
     class Mineral
     {
         //Property
         public MineralsVariety MineralsType { get; set; }
 
+        public Stage StageOfMineral { get; set; }
+
         //Constructor
         public Mineral(MineralsVariety mineral)
         {
-            MineralsType = mineral;           
+            MineralsType = mineral;
+            StageOfMineral = Stage.Raw;
         }
     }
 }
