@@ -8,6 +8,12 @@ namespace My_Little_Miner
 {
     class Shop
     {
+        //Money of mineral
+        //Cobblestone = 10
+        //Coal ore = 25
+        //Iron ore = 40
+        //Gold ore = 70
+        //Diamond ore = 80
 
         public string Inventory(Player player)
         {
@@ -15,44 +21,48 @@ namespace My_Little_Miner
 
             for (int i = 0; i < player.Backpack.Count; i++)
             {
-                inventory += $"{i + 1} {player.Backpack[i].StageOfMineral.ToString()} {player.Backpack[i].MineralsType} \n";
+                inventory += $"{i} {player.Backpack[i].StageOfMineral} {player.Backpack[i].MineralsType} \n";
             }
             return inventory;
         }
 
-
-        public string MineralShop(Player player)
+        public string MineralSell(Player player)
         {
-
+            string mineralSold = "";
             int userintput = Convert.ToInt32(Console.ReadLine());
+            
             switch (player.Backpack[userintput].MineralsType)
             {
                 case MineralsVariety.Cobblestone:
-                    player.Money += 10 + MineralValue(player.Backpack[userintput]);
+                    player.Money += 10 + StageValue(player.Backpack[userintput]);
+                    mineralSold = $"You have sold {player.Backpack[userintput].MineralsType}";
                     player.Backpack.RemoveAt(userintput);
                     break;
                 case MineralsVariety.CoalOre:
-                    player.Money += 25;
+                    player.Money += 25 + StageValue(player.Backpack[userintput]);
+                    mineralSold = $"You have sold {player.Backpack[userintput].MineralsType}";
                     player.Backpack.RemoveAt(userintput);
                     break;
                 case MineralsVariety.IronOre:
-                    player.Money += 40;
+                    player.Money += 40 + StageValue(player.Backpack[userintput]);
+                    mineralSold = $"You have sold {player.Backpack[userintput].MineralsType}";
                     player.Backpack.RemoveAt(userintput);
                     break;
                 case MineralsVariety.GoldOre:
-                    player.Money += 70;
+                    player.Money += 70 + StageValue(player.Backpack[userintput]);
+                    mineralSold = $"You have sold {player.Backpack[userintput].MineralsType}";
                     player.Backpack.RemoveAt(userintput);
                     break;
                 case MineralsVariety.DiamondOre:
-                    player.Money += 100;
+                    player.Money += 100 + StageValue(player.Backpack[userintput]);
+                    mineralSold = $"You have sold {player.Backpack[userintput].MineralsType}";
                     player.Backpack.RemoveAt(userintput);
-                    break;               
+                    break;
             }
-            return null;
-
+            return mineralSold;
         }
 
-        public int MineralValue(Mineral mineral)
+        public int StageValue(Mineral mineral)
         {
             switch (mineral.StageOfMineral)
             {
@@ -60,8 +70,11 @@ namespace My_Little_Miner
                     return 0;
                 case Stage.Refined:
                     return 10;
+                default:
+                    return 0;
             }
-            return 0;
         }
+
+        
     }
 }
