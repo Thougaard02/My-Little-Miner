@@ -17,11 +17,7 @@ namespace My_Little_Miner
             for (int i = 0; i < player.Backpack.Count; i++)
             {
 
-                inventory += $"{i + 1 } {player.Backpack[i].StageOfMineral.ToString()} {player.Backpack[i].MineralsType} \n";
-            }
-            return inventory;
-        }
-        public string MineralSmelt(Player player)
+        public void MineralSmelt(Player player)
         {
             string refinedMineral = "";
 
@@ -29,30 +25,13 @@ namespace My_Little_Miner
             userinput--;
             for (int i = 0; i < player.Backpack.Count; i++)
             {
-                if (userinput == i && player.Backpack[i].StageOfMineral == Stage.Raw)
+                if ((int)player.Backpack[i].MineralsType == (int)player.Backpack[i].MineralsType * 3)
                 {
-                    player.Backpack[i].StageOfMineral = Stage.Refined;
-                    refinedMineral = player.Backpack[i].StageOfMineral.ToString() + FormatEnum(player.Backpack[i].MineralsType);
+                    if (userinput == player.Backpack[i].MineralsType.ToString())
+                    {
+                        player.Backpack.Remove();
+                    }
                 }
-            }
-            return refinedMineral;
-        }
-
-        private string FormatEnum(MineralsVariety mineralsVariety)
-        {
-            //Print mined minerals name
-            switch (mineralsVariety)
-            {
-                case MineralsVariety.Cobblestone:
-                    return " Cobblestone";
-                case MineralsVariety.CoalOre:
-                    return " Coal Ore";
-                case MineralsVariety.IronOre:
-                    return " Iron Ore";
-                case MineralsVariety.GoldOre:
-                    return " Gold Ore";
-                case MineralsVariety.DiamondOre:
-                    return " Diamond Ore";
             }
             return mineralsVariety.ToString();
         }

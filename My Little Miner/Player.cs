@@ -28,6 +28,7 @@ namespace My_Little_Miner
         }
         public string ShowInventory()
         {
+            //Shows players' Backpack inventory
             string backpack = "";
             for (int i = 0; i < Backpack.Count; i++)
             {
