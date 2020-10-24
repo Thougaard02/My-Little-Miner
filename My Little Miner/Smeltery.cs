@@ -29,13 +29,35 @@ namespace My_Little_Miner
             userinput--;
             for (int i = 0; i < player.Backpack.Count; i++)
             {
+                
                 if (userinput == i && player.Backpack[i].StageOfMineral == Stage.Raw)
                 {
                     player.Backpack[i].StageOfMineral = Stage.Refined;
                     refinedMineral = player.Backpack[i].StageOfMineral.ToString() + FormatEnum(player.Backpack[i].MineralsType);
                 }
+
+                //CHECK IF REFINED MINERAL EXIST
+                else if(userinput == i && player.Backpack[i].StageOfMineral == Stage.Refined)
+                {
+                    CheckRefinedMineral(player);
+                    refinedMineral = player.Backpack[i].StageOfMineral.ToString() + FormatEnum(player.Backpack[i].MineralsType);
+                }
             }
             return refinedMineral;
+        }
+
+        public bool CheckRefinedMineral(Player player)
+        {
+            //REFINED MINERAL EXIST
+            
+            bool alreadyRefined = true;
+
+            for (int i = 0; i < player.Backpack.Count; i++)
+            {
+                bool refined = player.Backpack[i].StageOfMineral == Stage.Refined;                
+                return refined;
+            }
+            return alreadyRefined;
         }
 
         private string FormatEnum(MineralsVariety mineralsVariety)

@@ -26,7 +26,7 @@ namespace My_Little_Miner
                     Console.WriteLine("Going to the cave...");
                     Thread.Sleep(1000);
                     Console.Clear();
-                   
+
                     MiningScene(player);
                 }
                 else if (userinput == 2)
@@ -65,14 +65,14 @@ namespace My_Little_Miner
             {
                 while (true)
                 {
-                    
+
                     Console.WriteLine("1. Keep Mining" + "\n" + "2. Return To Villages" + "\n" + "You got a new mineral " + mine.GoMining(player));
                     int userinput = Convert.ToInt32(Console.ReadLine());
                     if (userinput == 1)
                     {
                         Console.Clear();
                         MiningScene(player);
-                        
+
                     }
                     if (userinput == 2)
                     {
@@ -94,7 +94,7 @@ namespace My_Little_Miner
                 Thread.Sleep(500);
                 Console.Clear();
 
-                MiningScene(player);
+                Scene(player);
                 throw;
             }
 
@@ -102,37 +102,77 @@ namespace My_Little_Miner
         public void Inventory(Player player)
         {
             //Inventory
-            while (true)
+            try
             {
-                Console.Clear();
-                Console.WriteLine("Inventory:" + "\n" + "--------------------------" + "\n");
-                Console.WriteLine(player.ShowInventory() + "\n" + "--------------------------");
-                Console.WriteLine("1. Close backpack");
-                int userinput = Convert.ToInt32(Console.ReadLine());
-                if (userinput == 1)
+                while (true)
                 {
                     Console.Clear();
-                    Scene(player);
+                    Console.WriteLine("Inventory:" + "\n" + "--------------------------" + "\n");
+                    Console.WriteLine(player.ShowInventory() + "\n" + "--------------------------");
+                    Console.WriteLine("1. Close backpack");
+                    int userinput = Convert.ToInt32(Console.ReadLine());
+                    if (userinput == 1)
+                    {
+                        Console.Clear();
+                        Scene(player);
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
                 }
+            }
+            catch (Exception)
+            {
+
+                Console.Clear();
+                Console.WriteLine("Wrong input");
+                Thread.Sleep(500);
+                Console.Clear();
+                Inventory(player);
+                throw;
             }
         }
         public void SmelteryScene(Player player)
         {
-            while (true)
+            try
             {
-                Console.Clear();
-                Console.WriteLine("Welcome to the smeltery" + "\n");
-                Console.WriteLine($"Inventory \n-------------------------- \n{smeltery.Inventory(player)}--------------------------");
-                Console.WriteLine("Enter the number of the mineral you want to refined" + "\n");
-                Console.WriteLine("0. Return To Villages");
-                Console.WriteLine(smeltery.MineralSmelt(player));
 
-                int userinput = Convert.ToInt32(Console.ReadLine());
-                if (userinput == 0)
+                while (true)
                 {
                     Console.Clear();
-                    Scene(player);
+                    CheckInventory(player);
+                    Console.WriteLine("Welcome to the smeltery" + "\n");
+                    Console.WriteLine($"Inventory \n-------------------------- \n{smeltery.Inventory(player)}--------------------------");
+                    Console.WriteLine("Enter the number of the mineral you want to refined");
+                    //Console.WriteLine(smeltery.CheckRefinedMineral(player));
+                    Console.WriteLine(smeltery.MineralSmelt(player));
+                    //Console.WriteLine(smeltery.MineralSmelt(player));
+
+                    Console.WriteLine("\n" + "1. Keep smelt minerals");
+                    Console.WriteLine("0. Return To Villages");
+                    int userinput = Convert.ToInt32(Console.ReadLine());
+                    if (userinput == 0)
+                    {
+                        Console.Clear();
+                        SmelteryScene(player);
+                    }
+                    else if (userinput == -1)
+                    {
+                        Console.Clear();
+                        Scene(player);
+                    }
                 }
+            }
+            catch (Exception)
+            {
+
+                Console.Clear();
+                Console.WriteLine("Wrong input");
+                Thread.Sleep(500);
+                Console.Clear();
+                SmelteryScene(player);
+                throw;
             }
         }
         public void ShopScene(Player player)
@@ -169,6 +209,14 @@ namespace My_Little_Miner
                 {
                     Console.Clear();
                     Scene(player);
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Wrong input");
+                    Thread.Sleep(500);
+                    Console.Clear();
+                    CheckInventory(player);
                 }
             }
         }
