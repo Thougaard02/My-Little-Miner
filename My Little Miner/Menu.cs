@@ -144,20 +144,18 @@ namespace My_Little_Miner
                     CheckInventory(player);
                     Console.WriteLine("Welcome to the smeltery" + "\n");
                     Console.WriteLine($"Inventory \n-------------------------- \n{smeltery.Inventory(player)}--------------------------");
-                    Console.WriteLine("Enter the number of the mineral you want to refined");
-                    //Console.WriteLine(smeltery.CheckRefinedMineral(player));
+                    Console.WriteLine("Enter the number of the mineral you want to refined");                    
                     Console.WriteLine(smeltery.MineralSmelt(player));
-                    //Console.WriteLine(smeltery.MineralSmelt(player));
 
-                    Console.WriteLine("\n" + "1. Keep smelt minerals");
+                    Console.WriteLine("--------------------------" + "\n" +"1. Keep smelt minerals");
                     Console.WriteLine("0. Return To Villages");
                     int userinput = Convert.ToInt32(Console.ReadLine());
-                    if (userinput == 0)
+                    if (userinput == -1)
                     {
                         Console.Clear();
                         SmelteryScene(player);
                     }
-                    else if (userinput == -1)
+                    else if (userinput == 0)
                     {
                         Console.Clear();
                         Scene(player);
@@ -166,7 +164,6 @@ namespace My_Little_Miner
             }
             catch (Exception)
             {
-
                 Console.Clear();
                 Console.WriteLine("Wrong input");
                 Thread.Sleep(500);
