@@ -16,7 +16,6 @@ namespace My_Little_Miner
         GoldOre,
         DiamondOre
     }
-
     public enum Stage
     {
         Raw,

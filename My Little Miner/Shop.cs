@@ -21,7 +21,7 @@ namespace My_Little_Miner
 
             for (int i = 0; i < player.Backpack.Count; i++)
             {
-                inventory += $"{i} {player.Backpack[i].StageOfMineral} {player.Backpack[i].MineralsType} \n";
+                inventory += $"{i +1} {player.Backpack[i].StageOfMineral} {player.Backpack[i].MineralsType} \n";
             }
             return inventory;
         }
@@ -30,7 +30,7 @@ namespace My_Little_Miner
         {
             string mineralSold = "";
             int userintput = Convert.ToInt32(Console.ReadLine());
-            
+            userintput--;
             switch (player.Backpack[userintput].MineralsType)
             {
                 case MineralsVariety.Cobblestone:

@@ -16,9 +16,11 @@ namespace My_Little_Miner
         {
             try
             {
-                Console.WriteLine(player.Money);
-                Console.WriteLine("My LITTLE MINER" + "\n" + "1. Go to the cave and mine" + "\n" + "2. Open your inventory" + "\n" + "3. Smelt your stuff in the smeltery" + "\n" + "4. Go to Shop");
+                Console.WriteLine($"Player Name {player.Name} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}");
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine("1. Go to the cave and mine" + "\n" + "2. Open your inventory" + "\n" + "3. Smelt your stuff in the smeltery" + "\n" + "4. Go to Shop");
 
+                Console.SetCursorPosition(0, 6);
                 int userinput = Convert.ToInt32(Console.ReadLine());
                 if (userinput == 1)
                 {
@@ -107,8 +109,8 @@ namespace My_Little_Miner
                 while (true)
                 {
                     Console.Clear();
-                    Console.WriteLine("Inventory:" + "\n" + "--------------------------" + "\n");
-                    Console.WriteLine(player.ShowInventory() + "\n" + "--------------------------");
+                    Console.WriteLine("Inventory:" + "\n" + "--------------------------");
+                    Console.WriteLine(player.ShowInventory() + "--------------------------");
                     Console.WriteLine("1. Close backpack");
                     int userinput = Convert.ToInt32(Console.ReadLine());
                     if (userinput == 1)
