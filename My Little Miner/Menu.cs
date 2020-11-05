@@ -178,8 +178,8 @@ namespace My_Little_Miner
         {
             while (true)
             {
-                CheckInventory(player);
                 Console.WriteLine("Welcome to the shop");
+                CheckInventory(player);
                 Console.WriteLine($"Inventory \n-------------------------- \n{shop.Inventory(player)}--------------------------");
                 Console.WriteLine("Enter the number of the mineral you want to refined");
                 Console.WriteLine(shop.MineralSell(player));
