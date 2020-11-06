@@ -149,9 +149,10 @@ namespace My_Little_Miner
                     Console.WriteLine("Enter the number of the mineral you want to refined");
                     Console.WriteLine(smeltery.MineralSmelt(player));
 
-                    Console.WriteLine("--------------------------" + "\n" + "1. Keep smelt minerals");
-                    Console.WriteLine("0. Return To Villages");
+                    Console.WriteLine("--------------------------" + "\n" + "0. Keep smelt minerals");
+                    Console.WriteLine("1. Return To Villages");
                     int userinput = Convert.ToInt32(Console.ReadLine());
+                    userinput--;
                     if (userinput == -1)
                     {
                         Console.Clear();
@@ -182,23 +183,59 @@ namespace My_Little_Miner
                 {
 
                     Console.WriteLine("Welcome to the shop");
-                    Console.WriteLine("1. Buy stuff" + "\n" + "2. Sell mineral");
+                    Console.WriteLine("1. Buy stuff" + "\n" + "2. Sell mineral" + "\n" + "3. Return To Villages");
 
                     int userinput = Convert.ToInt32(Console.ReadLine());
                     if (userinput == 1)
                     {
                         Console.Clear();
-                        Console.WriteLine(shop.ShopPickaxe());
-                        Console.WriteLine(shop.BuyPickaxe(player));
-                        Console.ReadKey();
+                        Console.WriteLine("1. Buy Pickaxe" + "\n" + "2. Buy Food" + "\n" + "3. Return To Shop");
+                        int BuyStuffInput = Convert.ToInt32(Console.ReadLine());
+                        //PICKAXE SHOP
+                        if (BuyStuffInput == 1)
+                        {
+                            Console.Clear();
+                            Console.WriteLine(shop.ShopPickaxe());
+                            Console.WriteLine(shop.BuyPickaxe(player));
+                            Console.Clear();
+                        }
 
+                        //FOOD SHOP FIX
+                        else if (BuyStuffInput == 2)
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"Apple = 2 | Bread = 5 | Cookie = 10 | Steak = 20 | Fish = 30");
+                            Console.WriteLine(shop.ShopFood());
+                            Console.WriteLine(shop.BuyFood(player));
+
+
+                            Console.WriteLine("1. Continue to shopping");
+                            Console.WriteLine("2. Return to Shop");
+                            int input = Convert.ToInt32(Console.ReadLine());
+                            if (input == 1)
+                            {
+                                Console.Clear();
+                                Console.WriteLine($"Apple = 2 | Bread = 5 | Cookie = 10 | Steak = 20 | Fish = 30");
+                                Console.WriteLine(shop.ShopFood());
+                                Console.WriteLine(shop.BuyFood(player));
+                            }
+                            else if (input == 2)
+                            {
+                                Console.Clear();
+                                Scene(player);
+                                Console.Clear();
+                            }
+                        }
                     }
+                    //SELL MINERALS
                     else if (userinput == 2)
                     {
+                        
+
                         Console.Clear();
                         CheckInventory(player);
                         Console.WriteLine($"Inventory \n-------------------------- \n{shop.Inventory(player)}--------------------------");
-                        Console.WriteLine("Enter the number of the mineral you want to refined");
+                        Console.WriteLine("Enter the number of the mineral you want to sell");
                         Console.WriteLine(shop.MineralSell(player));
 
                         Console.WriteLine("\n" + "Press any key to continue shopping");
@@ -210,6 +247,17 @@ namespace My_Little_Miner
                             Console.Clear();
                             Scene(player);
                         }
+                    }
+                    //RETURN TO VILLAGES
+                    else if (userinput == 3)
+                    {
+                        Console.Clear();
+                        Scene(player);
+                        Console.Clear();
+                    }
+                    else
+                    {
+                        throw new Exception();
                     }
                 }
             }
@@ -249,6 +297,18 @@ namespace My_Little_Miner
                     CheckInventory(player);
                 }
             }
+        }
+
+        public void ShopFoodScene(Player player)
+        {
+            Console.Clear();
+            Console.WriteLine($"Apple = 2 | Bread = 5 | Cookie = 10 | Steak = 20 | Fish = 30");
+            Console.WriteLine(shop.ShopFood());
+            Console.WriteLine(shop.BuyFood(player));
+
+
+            Console.WriteLine("1. Continue to shopping");
+            Console.WriteLine("2. Return to Shop");
         }
     }
 }

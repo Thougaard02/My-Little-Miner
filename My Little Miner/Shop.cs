@@ -1,11 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace My_Little_Miner
 {
+    public enum Food
+    {
+        Apple,
+        Bread,
+        Cookie,
+        Fish,
+        Steak
+    }
     class Shop
     {
         //Money of mineral
@@ -14,6 +23,8 @@ namespace My_Little_Miner
         //Iron ore = 40
         //Gold ore = 70
         //Diamond ore = 80
+
+        public Food FoodType { get; set; }
 
         public string Inventory(Player player)
         {
@@ -128,5 +139,60 @@ namespace My_Little_Miner
             return pickaxeBought;
         }
 
+        public string ShopFood()
+        {
+            string foodList = "";
+            Type foodType = typeof(Food);
+            string[] foodName = foodType.GetEnumNames();
+            for (int i = 0; i < foodName.Length; i++)
+            {
+                foodList += $"{i + 1}. {foodName[i]}\n";
+            }
+            return foodList;
+        }
+
+
+        public string BuyFood(Player player)
+        {
+            string foodTemp = "";
+            int userinput = Convert.ToInt32(Console.ReadLine());
+
+            if (userinput == 1 && player.Money >= 2)
+            {
+                player.Money -= 2;
+                player.Health += 2;
+                FoodType = Food.Apple;
+                foodTemp = $"You bought {FoodType} and health {player.Health}";
+            }
+            else if (userinput == 2 && player.Money >= 5)
+            {
+                player.Money -= 5;
+                player.Health += 5;
+                FoodType = Food.Bread;
+                foodTemp = $"You bought {FoodType} and health {player.Health}";
+            }
+            else if (userinput == 3 && player.Money >= 10)
+            {
+                player.Money -= 10;
+                player.Health += 10;
+                FoodType = Food.Cookie;
+                foodTemp = $"You bought {FoodType} and health {player.Health}";
+            }
+            else if (userinput == 4 && player.Money >= 20)
+            {
+                player.Money -= 20;
+                player.Health += 20;
+                FoodType = Food.Steak;
+                foodTemp = $"You bought {FoodType} and health {player.Health}";
+            }
+            else if (userinput == 5 && player.Money >= 30)
+            {
+                player.Money -= 30;
+                player.Health += 30;
+                FoodType = Food.Fish;
+                foodTemp = $"You bought {FoodType} and health {player.Health}";
+            }
+            return foodTemp;
+        }
     }
 }

@@ -16,15 +16,19 @@ namespace My_Little_Miner
 
         public List<Mineral> Backpack { get; set; }
 
+        public int Health { get; set; }
+
 
         //Constructor
-        public Player(string name, bool gender, Pickaxe myPickaxe)
+        public Player(string name, bool gender, Pickaxe myPickaxe, int PlayerHealth)
         {
             Name = name;
             IsMale = gender;
             MyPickaxe = myPickaxe;
             Money = Money;
             Backpack = new List<Mineral>();
+            Health = PlayerHealth;
+
         }
         public string ShowInventory()
         {
