@@ -146,10 +146,10 @@ namespace My_Little_Miner
                     CheckInventory(player);
                     Console.WriteLine("Welcome to the smeltery" + "\n");
                     Console.WriteLine($"Inventory \n-------------------------- \n{smeltery.Inventory(player)}--------------------------");
-                    Console.WriteLine("Enter the number of the mineral you want to refined");                    
+                    Console.WriteLine("Enter the number of the mineral you want to refined");
                     Console.WriteLine(smeltery.MineralSmelt(player));
 
-                    Console.WriteLine("--------------------------" + "\n" +"1. Keep smelt minerals");
+                    Console.WriteLine("--------------------------" + "\n" + "1. Keep smelt minerals");
                     Console.WriteLine("0. Return To Villages");
                     int userinput = Convert.ToInt32(Console.ReadLine());
                     if (userinput == -1)
@@ -176,26 +176,57 @@ namespace My_Little_Miner
         }
         public void ShopScene(Player player)
         {
-            while (true)
+            try
             {
-                CheckInventory(player);
-                Console.WriteLine("Welcome to the shop");
-                Console.WriteLine($"Inventory \n-------------------------- \n{shop.Inventory(player)}--------------------------");
-                Console.WriteLine("Enter the number of the mineral you want to refined");
-                Console.WriteLine(shop.MineralSell(player));
-
-                Console.WriteLine("\n" + "Press any key to continue shopping");
-                Console.WriteLine("1. Return to Villages");
-
-                string userintput = Console.ReadLine();
-                Console.Clear();
-                if (userintput == "1")
+                while (true)
                 {
-                    Console.Clear();
-                    Scene(player);
+
+                    Console.WriteLine("Welcome to the shop");
+                    Console.WriteLine("1. Buy stuff" + "\n" + "2. Sell mineral");
+
+                    int userinput = Convert.ToInt32(Console.ReadLine());
+                    if (userinput == 1)
+                    {
+                        Console.Clear();
+                        Console.WriteLine(shop.ShopPickaxe());
+                        Console.WriteLine(shop.BuyPickaxe(player));
+                        Console.ReadKey();
+
+                    }
+                    else if (userinput == 2)
+                    {
+                        Console.Clear();
+                        CheckInventory(player);
+                        Console.WriteLine($"Inventory \n-------------------------- \n{shop.Inventory(player)}--------------------------");
+                        Console.WriteLine("Enter the number of the mineral you want to refined");
+                        Console.WriteLine(shop.MineralSell(player));
+
+                        Console.WriteLine("\n" + "Press any key to continue shopping");
+                        Console.WriteLine("1. Return to Villages");
+                        string userintput = Console.ReadLine();
+                        Console.Clear();
+                        if (userintput == "1")
+                        {
+                            Console.Clear();
+                            Scene(player);
+                        }
+                    }
                 }
             }
+            catch (Exception)
+            {
+                Console.Clear();
+                Console.WriteLine("Wrong input");
+                Thread.Sleep(500);
+                Console.Clear();
+                ShopScene(player);
+                throw;
+            }
         }
+
+
+
+
         public void CheckInventory(Player player)
         {
             bool inventoryIsEmpty = !player.Backpack.Any();

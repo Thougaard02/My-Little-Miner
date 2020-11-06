@@ -19,10 +19,7 @@ namespace My_Little_Miner
     class Pickaxe
     {
         //Property
-        private PickaxeVariety pickaxeType;
         public PickaxeVariety PickaxeType { get; set; }
-
-      
 
         //Constructor
         public Pickaxe(PickaxeVariety pickaxe)

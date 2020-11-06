@@ -21,7 +21,7 @@ namespace My_Little_Miner
 
             for (int i = 0; i < player.Backpack.Count; i++)
             {
-                inventory += $"{i +1} {player.Backpack[i].StageOfMineral} {player.Backpack[i].MineralsType} \n";
+                inventory += $"{i + 1} {player.Backpack[i].StageOfMineral} {player.Backpack[i].MineralsType} \n";
             }
             return inventory;
         }
@@ -75,6 +75,58 @@ namespace My_Little_Miner
             }
         }
 
-        
+        public string ShopPickaxe()
+        {
+            string pickaxeList = "";
+            Type pickaxeType = typeof(PickaxeVariety);
+            string[] pickaxeName = pickaxeType.GetEnumNames();
+            for (int i = 0; i < pickaxeName.Length; i++)
+            {
+                pickaxeList += $"{i + 1}. Pickaxe {pickaxeName[i]}\n";
+            }
+            return pickaxeList;
+        }
+
+        public string BuyPickaxe(Player player)
+        {
+            //minus med player.money
+            string pickaxeBought = "";
+            int userinput = Convert.ToInt32(Console.ReadLine());
+
+            if (userinput == 1 && player.Money >= 50)
+            {
+                player.Money -= 50;
+                player.MyPickaxe.PickaxeType = PickaxeVariety.Wood;
+                pickaxeBought = $"You bought {player.MyPickaxe.PickaxeType}";
+
+            }
+            else if (userinput == 2 && player.Money >= 100)
+            {
+                player.Money -= 100;
+                player.MyPickaxe.PickaxeType = PickaxeVariety.Stone;
+                pickaxeBought = $"You bought {player.MyPickaxe.PickaxeType}";
+            }
+            else if (userinput == 3 && player.Money >= 200)
+            {
+                player.Money -= 200;
+                player.MyPickaxe.PickaxeType = PickaxeVariety.Iron;
+                pickaxeBought = $"You bought {player.MyPickaxe.PickaxeType}";
+            }
+            else if (userinput == 4 && player.Money >= 400)
+            {
+                player.Money -= 400;
+                player.MyPickaxe.PickaxeType = PickaxeVariety.Gold;
+                pickaxeBought = $"You bought {player.MyPickaxe.PickaxeType}";
+            }
+            else if (userinput == 5 && player.Money >= 1000)
+            {
+                player.Money -= 1000;
+                player.MyPickaxe.PickaxeType = PickaxeVariety.Diamond;
+                pickaxeBought = $"You bought {player.MyPickaxe.PickaxeType}";
+            }
+
+            return pickaxeBought;
+        }
+
     }
 }

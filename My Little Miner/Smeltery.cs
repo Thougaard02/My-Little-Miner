@@ -43,7 +43,7 @@ namespace My_Little_Miner
                     refinedMineral = player.Backpack[i].StageOfMineral.ToString() + FormatEnum(player.Backpack[i].MineralsType);
                 }
                 //Check if mineral doesn't exist
-                else if (userinput = !i)
+                else if (userinput > i)
                 {
                     refinedMineral = "Mineral doesn't exist";
                 }
