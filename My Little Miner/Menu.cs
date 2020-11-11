@@ -195,6 +195,7 @@ namespace My_Little_Miner
                         Console.WriteLine("Choose a option");
                         Console.WriteLine("1. Buy Pickaxe" + "\n" + "2. Buy Food" + "\n" + "3. Return To Shop" + "\n" + "4. Return To Villages");
                         int userinput = Convert.ToInt32(Console.ReadLine());
+                        #region Shop pickaxes
                         if (userinput == 1)
                         {
                             Console.Clear();
@@ -215,6 +216,8 @@ namespace My_Little_Miner
                                 Scene(player);
                             }
                         }
+                        #endregion
+                        #region Shop Food
                         else if (userinput == 2)
                         {
                             Console.Clear();
@@ -235,18 +238,47 @@ namespace My_Little_Miner
                                 Scene(player);
                             }
                         }
+                        #endregion
+                        #region Return to Shop
                         else if (userinput == 3)
                         {
                             Console.Clear();
                             ShopScene(player);
                         }
+                        #endregion
+                        #region Return to Villages
                         else if (userinput == 4)
                         {
                             Console.Clear();
                             Scene(player);
                         }
+                        #endregion
                     }
-                    
+                    #region Sell Mineral
+                    else if (Buystuffinput == 2)
+                    {
+                        Console.Clear();
+                        CheckInventory(player);
+                        Console.WriteLine($"Inventory \n-------------------------- \n{shop.Inventory(player)}--------------------------");
+
+                        Console.WriteLine("Enter the number of the mineral you want to sell");
+                        Console.WriteLine(shop.MineralSell(player));
+
+                        Console.WriteLine("1. Continue Sell Mineral");
+                        Console.WriteLine("2. Return to Villages");
+                        int userinput = Convert.ToInt32(Console.ReadLine());
+                        if (userinput == 1)
+                        {
+                            Console.Clear();
+                        }
+                        else if (userinput == 2)
+                        {
+                            Console.Clear();
+                            Scene(player);
+                        }
+                    }
+                    #endregion
+
 
                 }
             }
