@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -185,80 +186,68 @@ namespace My_Little_Miner
                     Console.WriteLine("Welcome to the shop");
                     Console.WriteLine("1. Buy stuff" + "\n" + "2. Sell mineral" + "\n" + "3. Return To Villages");
 
-                    int userinput = Convert.ToInt32(Console.ReadLine());
-                    if (userinput == 1)
+                    int Buystuffinput = Convert.ToInt32(Console.ReadLine());
+                    //Pickaxe Buy 
+                    //If you want to keep buying pickaxes, you need to make a method for it
+                    if (Buystuffinput == 1)
                     {
                         Console.Clear();
-                        Console.WriteLine("1. Buy Pickaxe" + "\n" + "2. Buy Food" + "\n" + "3. Return To Shop");
-                        int BuyStuffInput = Convert.ToInt32(Console.ReadLine());
-                        //PICKAXE SHOP
-                        if (BuyStuffInput == 1)
+                        Console.WriteLine("Choose a option");
+                        Console.WriteLine("1. Buy Pickaxe" + "\n" + "2. Buy Food" + "\n" + "3. Return To Shop" + "\n" + "4. Return To Villages");
+                        int userinput = Convert.ToInt32(Console.ReadLine());
+                        if (userinput == 1)
                         {
                             Console.Clear();
-                            Console.WriteLine(shop.ShopPickaxe());
+                            Console.WriteLine($"Wood Pickaxe = 50 | Stone Pickaxe = 100 | Iron Pickaxe = 200 | Gold Pickaxe = 400 | Diamond Pickaxe 1000");
+                            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
+                            Console.WriteLine(shop.PickaxeTypes());
                             Console.WriteLine(shop.BuyPickaxe(player));
-                            Console.Clear();
-                        }
-
-                        //FOOD SHOP FIX
-                        else if (BuyStuffInput == 2)
-                        {
-                            Console.Clear();
-                            Console.WriteLine($"Apple = 2 | Bread = 5 | Cookie = 10 | Steak = 20 | Fish = 30");
-                            Console.WriteLine(shop.ShopFood());
-                            Console.WriteLine(shop.BuyFood(player));
-
-
-                            Console.WriteLine("1. Continue to shopping");
-                            Console.WriteLine("2. Return to Shop");
-                            int input = Convert.ToInt32(Console.ReadLine());
-                            if (input == 1)
+                            Console.WriteLine("1. Return to Shop" + "\n" + "2. Return To Villages");
+                            int seconduserinput = Convert.ToInt32(Console.ReadLine());
+                            if (seconduserinput == 1)
                             {
                                 Console.Clear();
-                                Console.WriteLine($"Apple = 2 | Bread = 5 | Cookie = 10 | Steak = 20 | Fish = 30");
-                                Console.WriteLine(shop.ShopFood());
-                                Console.WriteLine(shop.BuyFood(player));
+                                ShopScene(player);
                             }
-                            else if (input == 2)
+                            else if (seconduserinput == 2)
                             {
                                 Console.Clear();
                                 Scene(player);
-                                Console.Clear();
                             }
                         }
-                    }
-                    //SELL MINERALS
-                    else if (userinput == 2)
-                    {
-                        
-
-                        Console.Clear();
-                        CheckInventory(player);
-                        Console.WriteLine($"Inventory \n-------------------------- \n{shop.Inventory(player)}--------------------------");
-                        Console.WriteLine("Enter the number of the mineral you want to sell");
-                        Console.WriteLine(shop.MineralSell(player));
-
-                        Console.WriteLine("\n" + "Press any key to continue shopping");
-                        Console.WriteLine("1. Return to Villages");
-                        string userintput = Console.ReadLine();
-                        Console.Clear();
-                        if (userintput == "1")
+                        else if (userinput == 2)
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"Apple = 2 | Bread = 5 | Cookie = 10 | Steak = 20 | Fish = 30");
+                            Console.WriteLine("------------------------------------------------------------");
+                            Console.WriteLine(shop.ShopFood());
+                            Console.WriteLine(shop.BuyFood(player));
+                            Console.WriteLine("1. Return to Shop" + "\n" + "2. Return To Villages");
+                            int seconduserinput = Convert.ToInt32(Console.ReadLine());
+                            if (seconduserinput == 1)
+                            {
+                                Console.Clear();
+                                ShopScene(player);
+                            }
+                            else if (seconduserinput == 2)
+                            {
+                                Console.Clear();
+                                Scene(player);
+                            }
+                        }
+                        else if (userinput == 3)
+                        {
+                            Console.Clear();
+                            ShopScene(player);
+                        }
+                        else if (userinput == 4)
                         {
                             Console.Clear();
                             Scene(player);
                         }
                     }
-                    //RETURN TO VILLAGES
-                    else if (userinput == 3)
-                    {
-                        Console.Clear();
-                        Scene(player);
-                        Console.Clear();
-                    }
-                    else
-                    {
-                        throw new Exception();
-                    }
+                    
+
                 }
             }
             catch (Exception)

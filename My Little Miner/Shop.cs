@@ -86,14 +86,14 @@ namespace My_Little_Miner
             }
         }
 
-        public string ShopPickaxe()
+        public string PickaxeTypes()
         {
             string pickaxeList = "";
             Type pickaxeType = typeof(PickaxeVariety);
             string[] pickaxeName = pickaxeType.GetEnumNames();
             for (int i = 0; i < pickaxeName.Length; i++)
             {
-                pickaxeList += $"{i + 1}. Pickaxe {pickaxeName[i]}\n";
+                pickaxeList += $"{i + 1}. Pickaxe {pickaxeName[i]} \n";
             }
             return pickaxeList;
         }
@@ -102,6 +102,7 @@ namespace My_Little_Miner
         {
             //minus med player.money
             string pickaxeBought = "";
+            
             int userinput = Convert.ToInt32(Console.ReadLine());
 
             if (userinput == 1 && player.Money >= 50)
@@ -134,6 +135,10 @@ namespace My_Little_Miner
                 player.Money -= 1000;
                 player.MyPickaxe.PickaxeType = PickaxeVariety.Diamond;
                 pickaxeBought = $"You bought {player.MyPickaxe.PickaxeType}";
+            }
+            else
+            {
+                pickaxeBought = "You do not have enough money";
             }
 
             return pickaxeBought;
@@ -191,6 +196,10 @@ namespace My_Little_Miner
                 player.Health += 30;
                 FoodType = Food.Fish;
                 foodTemp = $"You bought {FoodType} and health {player.Health}";
+            }
+            else
+            {
+                foodTemp = "You do not have enough money";
             }
             return foodTemp;
         }
