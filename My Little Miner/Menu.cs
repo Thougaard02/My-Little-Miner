@@ -17,7 +17,7 @@ namespace My_Little_Miner
         {
             try
             {
-                Console.WriteLine($"Player Name {player.Name} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}");
+                Console.WriteLine($"Player Name {player.Name} | Player Health {player.Health} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}");
                 Console.WriteLine("--------------------------------------------------");
                 Console.WriteLine("1. Go to the cave and mine" + "\n" + "2. Open your inventory" + "\n" + "3. Smelt your stuff in the smeltery" + "\n" + "4. Go to Shop");
 
@@ -178,8 +178,10 @@ namespace My_Little_Miner
         }
         public void ShopScene(Player player)
         {
+            #region Shop directory option - Buy stuff, Sell mineral, Return to villages
             try
             {
+
                 while (true)
                 {
 
@@ -187,10 +189,13 @@ namespace My_Little_Miner
                     Console.WriteLine("1. Buy stuff" + "\n" + "2. Sell mineral" + "\n" + "3. Return To Villages");
 
                     int Buystuffinput = Convert.ToInt32(Console.ReadLine());
+
+                    #region Shop buy Option - Buy Pixaces, Food and Return to shop, villages
                     //Pickaxe Buy 
                     //If you want to keep buying pickaxes, you need to make a method for it
                     if (Buystuffinput == 1)
                     {
+
                         Console.Clear();
                         Console.WriteLine("Choose a option");
                         Console.WriteLine("1. Buy Pickaxe" + "\n" + "2. Buy Food" + "\n" + "3. Return To Shop" + "\n" + "4. Return To Villages");
@@ -254,32 +259,21 @@ namespace My_Little_Miner
                         }
                         #endregion
                     }
+
                     #region Sell Mineral
                     else if (Buystuffinput == 2)
                     {
-                        Console.Clear();
-                        CheckInventory(player);
-                        Console.WriteLine($"Inventory \n-------------------------- \n{shop.Inventory(player)}--------------------------");
-
-                        Console.WriteLine("Enter the number of the mineral you want to sell");
-                        Console.WriteLine(shop.MineralSell(player));
-
-                        Console.WriteLine("1. Continue Sell Mineral");
-                        Console.WriteLine("2. Return to Villages");
-                        int userinput = Convert.ToInt32(Console.ReadLine());
-                        if (userinput == 1)
-                        {
-                            Console.Clear();
-                        }
-                        else if (userinput == 2)
-                        {
-                            Console.Clear();
-                            Scene(player);
-                        }
+                        SellMinerals(player);
                     }
                     #endregion
-
-
+                    #region Return To Villages
+                    else if (Buystuffinput == 3)
+                    {
+                        Console.Clear();
+                        Scene(player);
+                    }
+                    #endregion
+                    #endregion
                 }
             }
             catch (Exception)
@@ -291,8 +285,35 @@ namespace My_Little_Miner
                 ShopScene(player);
                 throw;
             }
+            #endregion
         }
 
+        private void SellMinerals(Player player)
+        {
+            while (true)
+            {
+
+                Console.Clear();
+                CheckInventory(player);
+                Console.WriteLine($"Inventory \n-------------------------- \n{shop.Inventory(player)}--------------------------");
+
+                Console.WriteLine("Enter the number of the mineral you want to sell");
+                Console.WriteLine(shop.MineralSell(player));
+
+                Console.WriteLine("1. Continue Sell Mineral");
+                Console.WriteLine("2. Return to Villages");
+                int userinput = Convert.ToInt32(Console.ReadLine());
+                if (userinput == 1)
+                {
+                    Console.Clear();
+                }
+                else if (userinput == 2)
+                {
+                    Console.Clear();
+                    Scene(player);
+                }
+            }
+        }
 
 
 

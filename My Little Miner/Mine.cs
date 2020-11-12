@@ -23,26 +23,31 @@ namespace My_Little_Miner
             
             if (value <= 50)
             {
+                player.Health -= 1;
                 temp = PickaxeFortune(player, MineralsVariety.Cobblestone, temp);
                 return temp;
             }
             else if (value >= 51 && value <= 81)
             {
+                player.Health -= 2;
                 temp = PickaxeFortune(player, MineralsVariety.CoalOre, temp);
                 return temp;
             }
             else if (value >= 82 && value <= 92)
             {
+                player.Health -= 3;
                 temp = PickaxeFortune(player, MineralsVariety.IronOre, temp);
                 return temp;
             }
             else if (value >= 93 && value <= 98)
             {
+                player.Health -= 4;
                 temp = PickaxeFortune(player, MineralsVariety.GoldOre, temp);
                 return temp;
             }
             else if (value >= 99 && value <= 100)
             {
+                player.Health -= 5;
                 temp = PickaxeFortune(player, MineralsVariety.DiamondOre, temp);
                 return temp;
             }
