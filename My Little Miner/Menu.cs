@@ -68,14 +68,13 @@ namespace My_Little_Miner
             {
                 while (true)
                 {
-
+                    Console.WriteLine($"Player Name {player.Name} | Player Health {player.Health} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}\n");
                     Console.WriteLine("1. Keep Mining" + "\n" + "2. Return To Villages" + "\n" + "You got a new mineral " + mine.GoMining(player));
                     int userinput = Convert.ToInt32(Console.ReadLine());
                     if (userinput == 1)
                     {
                         Console.Clear();
                         MiningScene(player);
-
                     }
                     if (userinput == 2)
                     {
@@ -100,7 +99,6 @@ namespace My_Little_Miner
                 Scene(player);
                 throw;
             }
-
         }
         public void Inventory(Player player)
         {
@@ -109,7 +107,8 @@ namespace My_Little_Miner
             {
                 while (true)
                 {
-                    Console.Clear();
+                    Console.Clear();    
+                    Console.WriteLine($"Player Name {player.Name} | Player Health {player.Health} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}\n");
                     Console.WriteLine("Inventory:" + "\n" + "--------------------------");
                     Console.WriteLine(player.ShowInventory() + "--------------------------");
                     Console.WriteLine("1. Close backpack");
@@ -140,11 +139,11 @@ namespace My_Little_Miner
         {
             try
             {
-
                 while (true)
                 {
                     Console.Clear();
                     CheckInventory(player);
+                    Console.WriteLine($"Player Name {player.Name} | Player Health {player.Health} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}");
                     Console.WriteLine("Welcome to the smeltery" + "\n");
                     Console.WriteLine($"Inventory \n-------------------------- \n{smeltery.Inventory(player)}--------------------------");
                     Console.WriteLine("Enter the number of the mineral you want to refined");
@@ -181,12 +180,11 @@ namespace My_Little_Miner
             #region Shop directory option - Buy stuff, Sell mineral, Return to villages
             try
             {
-
                 while (true)
                 {
-
+                    Console.WriteLine($"Player Name {player.Name} | Player Health {player.Health} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}\n");
                     Console.WriteLine("Welcome to the shop");
-                    Console.WriteLine("1. Buy stuff" + "\n" + "2. Sell mineral" + "\n" + "3. Return To Villages");
+                    Console.WriteLine("1. Buy stuff" + "\n" + "2. Sell mineral" + "\n" + "3. Return To Villages\n");
 
                     int Buystuffinput = Convert.ToInt32(Console.ReadLine());
 
@@ -197,6 +195,7 @@ namespace My_Little_Miner
                     {
 
                         Console.Clear();
+                        Console.WriteLine($"Player Name {player.Name} | Player Health {player.Health} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}\n");
                         Console.WriteLine("Choose a option");
                         Console.WriteLine("1. Buy Pickaxe" + "\n" + "2. Buy Food" + "\n" + "3. Return To Shop" + "\n" + "4. Return To Villages");
                         int userinput = Convert.ToInt32(Console.ReadLine());
@@ -204,6 +203,7 @@ namespace My_Little_Miner
                         if (userinput == 1)
                         {
                             Console.Clear();
+                            Console.WriteLine($"Player Name {player.Name} | Player Health {player.Health} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}\n");
                             Console.WriteLine($"Wood Pickaxe = 50 | Stone Pickaxe = 100 | Iron Pickaxe = 200 | Gold Pickaxe = 400 | Diamond Pickaxe 1000");
                             Console.WriteLine("--------------------------------------------------------------------------------------------------------");
                             Console.WriteLine(shop.PickaxeTypes());
@@ -226,6 +226,7 @@ namespace My_Little_Miner
                         else if (userinput == 2)
                         {
                             Console.Clear();
+                            Console.WriteLine($"Player Name {player.Name} | Player Health {player.Health} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}\n");
                             Console.WriteLine($"Apple = 2 | Bread = 5 | Cookie = 10 | Steak = 20 | Fish = 30");
                             Console.WriteLine("------------------------------------------------------------");
                             Console.WriteLine(shop.ShopFood());
@@ -287,14 +288,13 @@ namespace My_Little_Miner
             }
             #endregion
         }
-
         private void SellMinerals(Player player)
         {
             while (true)
             {
-
                 Console.Clear();
                 CheckInventory(player);
+                Console.WriteLine($"Player Name {player.Name} | Player Health {player.Health} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}\n");
                 Console.WriteLine($"Inventory \n-------------------------- \n{shop.Inventory(player)}--------------------------");
 
                 Console.WriteLine("Enter the number of the mineral you want to sell");
@@ -314,14 +314,12 @@ namespace My_Little_Miner
                 }
             }
         }
-
-
-
         public void CheckInventory(Player player)
         {
             bool inventoryIsEmpty = !player.Backpack.Any();
             if (inventoryIsEmpty)
             {
+                Console.WriteLine($"Player Name {player.Name} | Player Health {player.Health} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}\n");
                 Console.WriteLine($"Inventory is empty \n-------------------------- \n{shop.Inventory(player)}--------------------------");
                 Console.WriteLine("1. Return to villages");
                 int userinput = Convert.ToInt32(Console.ReadLine());
@@ -344,6 +342,7 @@ namespace My_Little_Miner
         public void ShopFoodScene(Player player)
         {
             Console.Clear();
+            Console.WriteLine($"Player Name {player.Name} | Player Health {player.Health} | Pickaxe type {player.MyPickaxe.PickaxeType}  | Money {player.Money}");
             Console.WriteLine($"Apple = 2 | Bread = 5 | Cookie = 10 | Steak = 20 | Fish = 30");
             Console.WriteLine(shop.ShopFood());
             Console.WriteLine(shop.BuyFood(player));

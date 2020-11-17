@@ -39,6 +39,7 @@ namespace My_Little_Miner
                 //Smelt raw mineral to refined mineral
                 else if (userinput == i && player.Backpack[i].StageOfMineral == Stage.Raw)
                 {
+                    player.Health -= 1;
                     player.Backpack[i].StageOfMineral = Stage.Refined;
                     refinedMineral = player.Backpack[i].StageOfMineral.ToString() + FormatEnum(player.Backpack[i].MineralsType);
                 }

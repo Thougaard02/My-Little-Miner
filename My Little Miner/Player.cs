@@ -4,7 +4,6 @@ namespace My_Little_Miner
 {
     class Player
     {
-
         //Property        
         public string Name { get; set; }
 
