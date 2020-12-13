@@ -16,52 +16,56 @@ namespace My_Little_Miner
             //Iron = 10% 82/92
             //Gold = 5% = 93/98
             //Diamond 2% 99/100
-
+            
             string temp = "";
             Random r = new Random(Guid.NewGuid().GetHashCode());
             int value = r.Next(1, 100);
-            player.Health -= 1;
-
+            
             if (value <= 50)
             {
+                player.Health -= 1;
                 temp = PickaxeFortune(player, MineralsVariety.Cobblestone, temp);
                 return temp;
             }
             else if (value >= 51 && value <= 81)
             {
+                player.Health -= 2;
                 temp = PickaxeFortune(player, MineralsVariety.CoalOre, temp);
                 return temp;
             }
             else if (value >= 82 && value <= 92)
             {
+                player.Health -= 3;
                 temp = PickaxeFortune(player, MineralsVariety.IronOre, temp);
                 return temp;
             }
             else if (value >= 93 && value <= 98)
             {
+                player.Health -= 4;
                 temp = PickaxeFortune(player, MineralsVariety.GoldOre, temp);
                 return temp;
             }
             else if (value >= 99 && value <= 100)
             {
+                player.Health -= 5;
                 temp = PickaxeFortune(player, MineralsVariety.DiamondOre, temp);
                 return temp;
             }
             return null;
         }
-        public string PickaxeFortune(Player player, MineralsVariety variety, string temp)
+        public string PickaxeFortune(Player player, MineralsVariety variety,string temp)
         {
             //returing minerals to players' backpack           
             Random rd = new Random();
             int chance = rd.Next(1, 100);
-
+            
             //Chance of getting 2x minerals
             if (chance >= 90)
             {
                 for (int i = 0; i < 2; i++)
                 {
                     player.Backpack.Add(new Mineral(variety));
-                    temp = FormatEnum(variety) + " 2x";
+                    temp = FormatEnum(variety) + " 2x"; 
                 }
                 return temp;
             }
@@ -82,9 +86,9 @@ namespace My_Little_Miner
                 case MineralsVariety.Cobblestone:
                     break;
                 case MineralsVariety.CoalOre:
-                    return "Coal Ore";
+                    return "Coal Ore";                    
                 case MineralsVariety.IronOre:
-                    return "Iron Ore";
+                    return "Iron Ore";                    
                 case MineralsVariety.GoldOre:
                     return "Gold Ore";
                 case MineralsVariety.DiamondOre:
